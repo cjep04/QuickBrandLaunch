@@ -49,6 +49,8 @@
     font-family: Arial, sans-serif;
     font-size: 14px;
     line-height: 20px;
+    position: relative;
+    overflow: hidden;
   }
   
 
@@ -66,10 +68,141 @@
   
   /* Improve focus styles for accessibility */
   *:focus {
-    outline: 2px solid blue;
+    outline: 0.5px solid ;
     outline-offset: 2px;
   }
 
+  /*
+//////////////////////////////////////////////////////////////////////////
+Gradient Section + Stars + Overlay
+/////////////////////////////////////////////////////////////////////////
+*/
+
+.container_pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    
+    background: transparent;
+    --gap: 10em;
+    --line: 1px;
+    --color: rgba(255, 255, 255, 0.2);
+    
+    background-image: 
+    linear-gradient(-90deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    ),
+    linear-gradient(0deg,
+      transparent calc(var(--gap) - var(--line)),
+      var(--color) calc(var(--gap) - var(--line) + 1px),
+      var(--color) var(--gap)
+    );
+    background-size: var(--gap) var(--gap);
+    background-position: center center;
+  }
+
+  
+.color_gradient{
+    height: 1000px;
+    width: 1000px;
+    background-image: radial-gradient(closest-side, rgba(163, 163, 163, 0.21), transparent);
+    position: absolute;
+    top: -500px;
+    left: 20%;
+  }
+
+  .color_gradient1{
+    height: 2000px;
+    width: 1000px;
+    background-image: radial-gradient(closest-side, rgba(163, 163, 163, 0.21), transparent);
+    position: fixed;
+    top: 400px;
+    left: 1200px;
+    bottom: 0;
+  }
+
+  .color_gradient2{
+    height: 2000px;
+    width: 1000px;
+    background-image: radial-gradient(closest-side, rgba(163, 163, 163, 0.21), transparent);
+    position: fixed;
+    top: 400px;
+    left: -300px;
+    bottom: 0;
+  }
+
+  /* Stars container (behind overlay by default) */
+  .stars-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .star {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    transition: all 0.3s ease-out;
+  }
+
+  /* Optional individual star glow on hover */
+  .star::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 80%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease-out;
+  }
+  .star:hover::after {
+    transform: translate(-50%, -50%) scale(4);
+  }
+
+  /* Spotlight overlay – covers the page and follows the mouse */
+  .spotlight_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.2); /* No solid color so stars remain visible */
+  }
+
+  /* The pseudo-element creates a radial gradient that “lights up” the stars underneath.
+     mix-blend-mode: screen makes the white glow blend with and brighten the stars. */
+  .spotlight_overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: radial-gradient(
+      circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255, 255, 255, 0.05),
+      transparent 60%
+    );
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  /* When hovering anywhere on the overlay, fade in the spotlight */
+  .spotlight_overlay:hover::before {
+    opacity: 1;
+  }
 
 /*
 //////////////////////////////////////////////////////////////////////////
@@ -95,7 +228,7 @@ Menu Section
         display: flex;
         margin-bottom: 10px;
         transition: bottom 0.3s ease-in-out;
-        
+        z-index: 3;
     }
 
  
@@ -113,16 +246,18 @@ Menu Section
         border-radius: 10px;
         gap: 10px;
         align-items: center;
+        z-index: 2;
     }
     
     li {
-        font-size: 0.9rem;
+        font-size: 1rem;
         color: #b4b4b4;
         padding: 10px 15px;
         font-family: "polymath", sans-serif;
         font-weight: 400;
         font-style: normal;
         text-align: center;
+        z-index: 3;
     }
     
     .contact_btn {
@@ -158,72 +293,100 @@ Hero Section
 /////////////////////////////////////////////////////////////////////////
 */
 
-.hero_base{
-    display:flex;
+.hero_base {
+    display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     text-align: center;
     height: 80vh;
-}
-
-.logo_container {
+    padding: 0 1rem; /* Adds side padding on smaller devices */
+  }
+  
+  .logo_container {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.logo {
+  }
+  
+  .logo {
     max-width: 300px;
-    padding: 50px 0px;
+    padding: 50px 0;
     opacity: 0.5;
-    transition: opacity 0.3s, filter 0.3s ease-in-out; /* Smooth transition */
-}
-
-/* Add glow effect */
-.logo:hover {
-    opacity: 1;
-}
-
-
-.hero_content, button{
+    transition: opacity 0.3s, filter 0.3s ease-in-out;
+  }
+  
+  .hero_content,
+  button {
     color: #fff;
-}
-
-.hero_content h1{
+  }
+  
+  .hero_content h1 {
     font-size: 4.5rem;
     padding-bottom: 10px;
     line-height: 70px;
     font-family: "havelock-titling-variable", sans-serif;
     font-variation-settings: "wght" 400;
-}
-
-.hero_content h3{
+  }
+  
+  .hero_content h3 {
     font-size: 1.5rem;
     padding-bottom: 20px;
-    color: #444;
+    color: #848484;
     font-family: "polymath", sans-serif;
     font-weight: 400;
     font-style: normal;
-}
-
-.button_base{
+  }
+  
+  .button_base {
     display: flex;
     gap: 15px;
     justify-content: center;
     align-items: center;
-}
-
-button{
+  }
+  
+  button {
     font-size: 0.9rem;
-    background-color:#444 ;
+    background-color: #444;
     padding: 10px 50px;
     border-radius: 10px;
     font-family: "polymath", sans-serif;
     font-weight: 400;
     font-style: normal;
     align-items: center;
-}
+    z-index: 2;
+    border: none;
+    cursor: pointer;
+
+  }
+  
+  /* Mobile Responsive Adjustments */
+  @media (max-width: 768px) {
+    .hero_content h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      padding-bottom: 8px;
+    }
+    .hero_content h3 {
+      font-size: 1.2rem;
+      padding-bottom: 15px;
+    }
+    .button_base {
+      flex-direction: column; /* Stacks buttons vertically */
+      gap: 10px;
+    }
+    button {
+      width: 80%;
+      max-width: 300px;
+      padding: 10px 20px;
+      font-size: 0.8rem;
+    }
+    .logo {
+      max-width: 200px;
+      padding: 30px 0;
+    }
+  }
+  
 /*
 //////////////////////////////////////////////////////////////////////////
 Hero Section - Button Pricing
@@ -241,6 +404,7 @@ Hero Section - Button Pricing
   
     display: flex;
     align-items: center;
+    justify-content: center; /* ensures children are centered */
     gap: 0.5rem;
   
     transform-origin: center;
@@ -259,8 +423,8 @@ Hero Section - Button Pricing
   .button_pricing:hover {
     transform: translateY(2px);
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
+  }
+  
   .button_pricing::before {
     content: "";
     position: absolute;
@@ -273,10 +437,10 @@ Hero Section - Button Pricing
     background-color: var(--black-700);
   
     border-radius: 14px;
-    box-shadow: inset 0 0.5px hsl(0, 0%, 100%), inset 0 -1px 2px 0 hsl(0, 0%, 0%),
-      0px 4px 10px -4px hsla(0 0% 0% / calc(1 - var(--active, 0))),
-      0 0 0 calc(var(--active, 0) * 0.375rem) hsl(260 97% 50% / 0.75);
-  
+    box-shadow: inset 0 0.5px hsl(0, 0%, 100%),
+                inset 0 -1px 2px 0 hsl(0, 0%, 0%),
+                0px 4px 10px -4px hsla(0 0% 0% / calc(1 - var(--active, 0))),
+                0 0 0 calc(var(--active, 0) * 0.375rem) hsl(260 97% 50% / 0.75);
     transition: all var(--transtion);
     z-index: 0;
   }
@@ -306,22 +470,17 @@ Hero Section - Button Pricing
     z-index: 2;
   }
   
-  
-  
   .button_pricing .dots_border {
     --size_border: calc(100% + 2px);
   
     overflow: hidden;
-  
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  
     width: var(--size_border);
     height: var(--size_border);
     background-color: transparent;
-  
     border-radius: 14px;
     z-index: -10;
   }
@@ -334,11 +493,9 @@ Hero Section - Button Pricing
     transform: translate(-50%, -50%);
     transform-origin: left;
     transform: rotate(0deg);
-  
     width: 100%;
     height: 2rem;
     background-color: #F16A2E;
-  
     mask: linear-gradient(transparent 0%, white 120%);
     animation: rotate 2s linear infinite;
   }
@@ -352,16 +509,13 @@ Hero Section - Button Pricing
   .button_pricing .sparkle {
     position: relative;
     z-index: 10;
-  
     width: 1.75rem;
   }
   
   .button_pricing .sparkle .path {
     fill: currentColor;
     stroke: currentColor;
-  
     transform-origin: center;
-  
     color: hsl(0, 0%, 100%);
   }
   
@@ -400,17 +554,30 @@ Hero Section - Button Pricing
   .button_pricing .text_button {
     position: relative;
     z-index: 10;
-  
     background-image: linear-gradient(
       90deg,
       hsla(0 0% 100% / 1) 0%,
       hsla(0 0% 100% / var(--active, 0)) 120%
     );
     background-clip: text;
-  
     font-size: 1rem;
     color: transparent;
+    text-align: center; /* ensures the text is centered */
   }
+  
+  /* Mobile Responsive Adjustments */
+  @media (max-width: 768px) {
+    .button_pricing {
+      padding: 1rem 2rem;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+    .button_pricing .text_button {
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  }
+  
   
 
   /*
@@ -423,18 +590,17 @@ Hero Section - Button Contact Us
     --border_radius: 9999px;
     --transtion: 0.3s ease-in-out;
     --offset: 2px;
-
+  
     cursor: pointer;
     position: relative;
-
+  
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    gap: 0.5rem;
-
+  
     transform-origin: center;
-
+  
     padding: 1rem 4rem;
     background-color: var(--black-700);
     color: white;
@@ -442,47 +608,47 @@ Hero Section - Button Contact Us
     border: none;
     border-radius: 14px;
     transform: scale(calc(1 + (var(--active, 0) * 0.1)));
-
+  
     transition: transform var(--transtion), box-shadow 0.2s ease-in-out;
     white-space: nowrap;
-}
-
-.button_contact:hover {
+  }
+  
+  .button_contact:hover {
     transform: translateY(2px);
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.button_contact:active {
+  }
+  
+  .button_contact:active {
     transform: translateY(4px);
     box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.4);
-}
-
-.button_contact::before {
+  }
+  
+  .button_contact::before {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
+  
     width: 100%;
     height: 100%;
     background-color: var(--black-700);
-
+  
     border-radius: 14px;
-    box-shadow: inset 0 0.5px hsl(0, 0%, 100%), inset 0 -1px 2px 0 hsl(0, 0%, 0%),
-        0px 4px 10px -4px hsla(0 0% 0% / calc(1 - var(--active, 0)));
-
+    box-shadow: inset 0 0.5px hsl(0, 0%, 100%),
+                inset 0 -1px 2px 0 hsl(0, 0%, 0%),
+                0px 4px 10px -4px hsla(0 0% 0% / calc(1 - var(--active, 0)));
     transition: all var(--transtion);
     z-index: -1;
-}
-
-.button_contact .content_wrapper {
+  }
+  
+  .button_contact .content_wrapper {
     display: flex;
     align-items: center;
     gap: 0.35rem;
-}
-
-.button_contact .text_button {
+  }
+  
+  .button_contact .text_button {
     position: relative;
     z-index: 10;
     background-image: linear-gradient(
@@ -495,16 +661,16 @@ Hero Section - Button Contact Us
     color: transparent;
     display: flex;
     align-items: center;
-    gap: 0.35rem;
-}
-
-.button_contact .text_button img {
+    gap: 0.50rem;
+  }
+  
+  .button_contact .text_button img {
     width: 25px;
     height: 25px;
     display: inline-block;
-}
-
-.hotkey_text {
+  }
+  
+  .hotkey_text {
     font-size: 0.7rem;
     color: white;
     opacity: 0.75;
@@ -512,26 +678,49 @@ Hero Section - Button Contact Us
     justify-content: center;
     margin-top: 0.5rem;
     padding-left: 235px;
-}
-
-
-
-
+  }
   
-#cycling-text {
+  /* Mobile Responsive Adjustments */
+  @media (max-width: 768px) {
+    .button_contact {
+      padding: 1rem 2rem;
+      font-size: 0.9rem;
+    }
+    .button_contact .text_button {
+      font-size: 0.9rem;
+    }
+    .hotkey_text {
+      display: none; /* Hide hotkey text on mobile */
+    }
+  }
+
+  #cycling-text {
     font-weight: bold;
+    font-size: 4.5rem; /* Base font size for larger screens */
     color: #F16A2E;
     text-shadow: 0 0 10px #F16A2E, 0 0 20px #F16A2E, 0 0 30px #F16A2E;
     border-right: 3px solid #F16A2E; /* Cursor effect */
     white-space: nowrap;
     overflow: hidden;
-    width: 0; /* Starts hidden */
+    width: 0; /* Starts hidden, assumed to be animated elsewhere */
     animation: glow 1.5s infinite alternate;
-}
-
-/* Smooth glow effect */
-@keyframes glow {
-    0% { text-shadow: 0 0 10px #F16A2E; }
-    100% { text-shadow: 0 0 20px #F16A2E, 0 0 40px #F16A2E; }
-}
+  }
+  
+  /* Smooth glow effect */
+  @keyframes glow {
+    0% {
+      text-shadow: 0 0 10px #F16A2E;
+    }
+    100% {
+      text-shadow: 0 0 20px #F16A2E, 0 0 40px #F16A2E;
+    }
+  }
+  
+  /* Mobile Responsive Adjustments */
+  @media (max-width: 768px) {
+    #cycling-text {
+      font-size: 3rem;         /* Reduce font size for mobile */
+      border-right-width: 2px;    /* Thinner cursor effect */
+    }
+  }
 
