@@ -50,8 +50,14 @@
     font-size: 14px;
     line-height: 20px;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto; /* Enables scrolling */
+    overflow-x: hidden; /* Prevents horizontal scroll */
+    scrollbar-width: none; /* Hides scrollbar in Firefox */
   }
+
+  html::-webkit-scrollbar {
+    display: none;
+}
   
 
   
