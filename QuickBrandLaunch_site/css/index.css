@@ -245,13 +245,18 @@ Menu Section
 		text-align: center;
 		z-index: 3;
 	}
+
+  
 	.contact_btn {
 		border: 1px solid #F16A2E;
 		padding: 10px 15px;
 		border-radius: 10px;
 		margin-left: 5px;
+    cursor: pointer;
+    z-index: 4;
 	}
 	.contact_btn:hover {
+    color: #fff;
 		background-image: linear-gradient(to bottom right, #464646, #f1692ecc);
 	}
 	.menu_section li a.hover,.menu_section li a.active {
