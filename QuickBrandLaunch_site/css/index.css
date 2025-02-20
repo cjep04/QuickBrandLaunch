@@ -785,3 +785,45 @@ Hero Section - Button Contact Us
   }
   
 
+  /*
+//////////////////////////////////////////////////////////////////////////
+Comapnies Worked With
+/////////////////////////////////////////////////////////////////////////
+*/
+
+.container_companies_worked_with{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 2rem;
+  max-width: 100%;
+
+}
+
+
+.content_container h1{
+  padding-bottom: 25px;
+  font-size: 1rem;
+  padding-bottom: 10px;
+  line-height: 70px;
+  font-family: "havelock-titling-variable", sans-serif;
+  font-variation-settings: "wght" 400;
+  text-align: center;
+  color: #b4b4b4;
+}
+
+.company_images {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-top: 10px;
+  position: relative;
+  max-width: 500px;
+}
+
+
+
+
+
+

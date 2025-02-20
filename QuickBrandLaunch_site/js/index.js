@@ -88,3 +88,6 @@ document.addEventListener("DOMContentLoaded", function () {
    spotlight.style.setProperty('--mouse-x', `${xPercent}%`);
    spotlight.style.setProperty('--mouse-y', `${yPercent}%`);
  });
+
+
+ 
