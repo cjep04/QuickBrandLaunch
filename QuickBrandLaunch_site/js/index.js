@@ -90,4 +90,29 @@ document.addEventListener("DOMContentLoaded", function () {
  });
 
 
- 
+ // JavaScript to highlight the active section in the menu on scroll
+document.addEventListener("DOMContentLoaded", function () {
+  const sections = document.querySelectorAll("section");
+  const menuLinks = document.querySelectorAll(".menu_section li a");
+
+  window.addEventListener("scroll", () => {
+      let currentSection = "";
+
+      sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+
+          if (pageYOffset >= sectionTop - sectionHeight / 3) {
+              currentSection = section.getAttribute("id");
+          }
+      });
+
+      // Remove active class from all links
+      menuLinks.forEach((link) => {
+          link.classList.remove("active");
+      });
+
+      // Add active class to the current menu item
+      document.querySelector(`a[href="#${currentSection}"]`).classList.add("active");
+  });
+});
