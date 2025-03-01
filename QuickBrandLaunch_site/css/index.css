@@ -59,7 +59,16 @@ html {
 /* Ensure consistent heading styles */
 h1, h2, h3, h4, h5, h6 {
 	font-weight: bold;
+	font-family: "havelock-titling-variable", sans-serif;
+	font-variation-settings: "wght" 400;
 }
+
+p{
+	font-family: "polymath", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
 /* Make elements behave predictably */
 table {
 	border-collapse: collapse;
@@ -688,3 +697,188 @@ Hero Section - Button Contact Us
 What we offer section                                       //
 ///////////////////////////////////////////
 */
+#what_we_offer {
+    background: rgba(18, 18, 18, 0.8); /* Slightly transparent dark background */
+    backdrop-filter: blur(8px); /* Glassmorphism effect */
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    margin: 50px auto;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    overflow: hidden;
+	z-index: 3;
+	position: relative;
+}
+
+/* Flexbox Layout for a Balanced Design */
+.offer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+	width: 100%;
+	z-index: 3;
+}
+
+/* Left Side - Title & Paragraph */
+.offer-text {
+    flex: 1;
+    text-align: left;
+    max-width: 50%;
+	z-index: 3;
+}
+
+.offer-text h3 {
+    color: #ffffff;
+    font-size: 3.5rem;
+	line-height: 60px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-weight: 600;
+    text-shadow: 0 0 8px #ffffff;
+	z-index: 3;
+	padding-bottom: 10px;
+}
+
+.offer-text h3 span{
+	color: #F16A2E;
+    text-shadow: 0 0 8px #F16A2E;
+}
+
+.offer-text p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+	z-index: 3;
+	padding-bottom: 10px;
+
+}
+
+/* Right Side - List */
+.offer-list {
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
+	z-index: 3;
+}
+
+/* Unique list styles */
+.offer-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: block;
+	padding: 20px;
+	z-index: 3;
+}
+
+/* Futuristic List Items */
+.offer-li {
+    background: rgba(255, 102, 0, 0.1);
+    padding: 14px;
+    margin: 10px 0;
+    border-left: 4px solid #F16A2E;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    border-radius: 6px;
+    box-shadow: inset 0 0 10px rgba(255, 102, 0, 0.2);
+	z-index: 3;
+}
+
+.offer-li:hover {
+    background: rgba(255, 102, 0, 0.2);
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+    transform: translateY(-3px);
+}
+
+/* CTA Button Wrapper */
+.offer-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+	z-index: 3;
+}
+
+/* CTA Button */
+.offer-button {
+    --black-700: hsla(0, 0%, 12%, 1);
+    --transtion: 0.3s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 12px 40px;
+    font-size: 1rem;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    background: linear-gradient(to right, #F16A2E, #ff6600);
+    border-radius: 14px;
+    border: none;
+    box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3);
+    transition: transform var(--transtion), box-shadow var(--transtion);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Hover Effect */
+.offer-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 102, 0, 0.5);
+}
+
+/* Active Click Effect */
+.offer-button:active {
+    transform: translateY(1px);
+    box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .offer-button {
+        width: 80%;
+        max-width: 280px;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #what_we_offer {
+        padding: 30px;
+    }
+
+    .offer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .offer-text,
+    .offer-list {
+        max-width: 100%;
+    }
+
+    .offer-li {
+        text-align: center;
+    }
+}
+
+
+
+
+
