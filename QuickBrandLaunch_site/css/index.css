@@ -703,7 +703,7 @@ What we offer section                                       //
     padding: 40px;
     border-radius: 14px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    max-width: 900px;
+    max-width: 1000px;
     margin: 50px auto;
     font-family: 'Poppins', sans-serif;
     text-align: center;
@@ -712,6 +712,7 @@ What we offer section                                       //
     overflow: hidden;
 	z-index: 3;
 	position: relative;
+	margin-bottom: 150px;
 }
 
 /* Flexbox Layout for a Balanced Design */
@@ -780,6 +781,7 @@ What we offer section                                       //
 
 /* Futuristic List Items */
 .offer-li {
+	color: #fff;
     background: rgba(255, 102, 0, 0.1);
     padding: 14px;
     margin: 10px 0;
@@ -849,6 +851,13 @@ What we offer section                                       //
     box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.4);
 }
 
+
+.whatweoffer_btn{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 10px;
+}
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .offer-button {
@@ -878,7 +887,201 @@ What we offer section                                       //
     }
 }
 
+/*
+///////////////////////////////////////////
+Why quickbrandlaunch section                                       //
+///////////////////////////////////////////
+*/
 
 
+/* Section Styling */
+#why_quickbrandlaunch {
+    background: rgba(18, 18, 18, 0.8); /* Glassmorphism effect */
+    backdrop-filter: blur(8px);
+    padding: 60px 40px;
+    border-radius: 14px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-width: 1000px;
+    margin: 60px auto;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+	transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+    z-index: 999;
+	margin-bottom: 150px;
 
+}
+
+/* Section Header */
+.why-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.why-header h3 {
+	font-size: 3.5rem;
+	line-height: 60px;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-shadow: 0 0 10px #ffffff;
+}
+
+.why-header h3 span{
+	color: #F16A2E;
+    text-shadow: 0 0 8px #F16A2E;
+}
+
+.why-header p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Grid Layout - Centered Cards */
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto; /* Centers the grid */
+}
+
+/* Individual Feature Cards */
+.why-card1 {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow:  0 0 10px #000000;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    position: relative;
+    z-index: 999;
+    overflow: hidden;
+    max-width: 320px;
+    width: 100%;
+    margin: 0 auto;
+	padding: 25px;
+	color: #fff;
+
+}
+
+.why-card2 {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000000;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    position: relative;
+    z-index: 999;
+    overflow: hidden;
+    max-width: 320px;
+    width: 100%;
+    margin: 0 auto;
+	padding: 25px;
+	color: #fff;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.why-card1, .why-card2 {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    text-align: center;
+    padding: 25px;
+}
+
+.why-logo {
+    width: 30px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 15px;
+    filter: brightness(1);
+    transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Hover Effect - Changes Logo Glow */
+.why-card1:hover .why-logo,
+.why-card2:hover .why-logo {
+    filter: brightness(1.5) drop-shadow(0 0 10px #F16A2E); /* Brighter & glowing */
+    transform: scale(1.1); /* Slightly enlarges */
+}
+
+/* Hover Effect for the Card */
+.why-card1:hover, .why-card2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 102, 0, 0.5);
+    background-color: rgba(241, 106, 46, 0.2); /* Subtle Orange */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect - Change Dot & Light Color */
+.why-card1:hover, .why-card2:hover,.dot:hover {
+    background-color: #F16A2E; /* Change to Orange */
+}
+
+.why-card1:hover, .why-card2:hover, .light:hover {
+    background: rgba(241, 106, 46, 0.5); /* Change to Orange Glow */
+    box-shadow: 0 0 15px rgba(241, 106, 46, 0.8);
+}
+
+/* Hover Effect for the Card */
+.why-card1:hover, .why-card2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 102, 0, 0.5);
+    background-color: #F16A2E; /* Subtle background color change */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Card Heading */
+.why-card h4 {
+    font-size: 20px;
+    color: #F16A2E;
+    margin-bottom: 8px;
+    font-weight: 500;
+    text-shadow: 0 0 8px #F16A2E;
+}
+
+/* Card Text */
+.why-card p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* CTA Button Wrapper */
+.why-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+	gap: 10px;
+}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .why-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .why-card {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .why-button {
+        width: 80%;
+        max-width: 280px;
+    }
+}
 
