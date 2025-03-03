@@ -698,17 +698,13 @@ What we offer section                                       //
 ///////////////////////////////////////////
 */
 #what_we_offer {
-    background: rgba(18, 18, 18, 0.8); /* Slightly transparent dark background */
-    backdrop-filter: blur(8px); /* Glassmorphism effect */
     padding: 40px;
     border-radius: 14px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     max-width: 1000px;
     margin: 50px auto;
     font-family: 'Poppins', sans-serif;
     text-align: center;
     transition: all 0.3s ease-in-out;
-    border: 1px solid rgba(255, 255, 255, 0.4);
     overflow: hidden;
 	z-index: 3;
 	position: relative;
@@ -896,16 +892,12 @@ Why quickbrandlaunch section                                       //
 
 /* Section Styling */
 #why_quickbrandlaunch {
-    background: rgba(18, 18, 18, 0.8); /* Glassmorphism effect */
-    backdrop-filter: blur(8px);
     padding: 60px 40px;
     border-radius: 14px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     max-width: 1000px;
     margin: 60px auto;
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.4);
 	transition: all 0.3s ease-in-out;
     overflow: hidden;
     position: relative;
@@ -1085,3 +1077,132 @@ Why quickbrandlaunch section                                       //
     }
 }
 
+
+/*
+///////////////////////////////////////////
+Pricing section                                       //
+///////////////////////////////////////////
+*/
+
+
+
+
+
+/*
+///////////////////////////////////////////
+FAQ section                                       //
+///////////////////////////////////////////
+*/
+  
+/* FAQ Section */
+#faqs {
+    padding: 80px 50px;
+    border-radius: 16px;
+    max-width: 1000px;
+    margin: 80px auto;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+}
+
+/* FAQ Header */
+.faq-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.faq-header h3 {
+	line-height: 60px;
+    font-size: 3rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.faq-header h3 span {
+    color: #F16A2E;
+    text-shadow: 0 0 8px #F16A2E;
+}
+
+.faq-header p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 300;
+}
+
+/* FAQ Container */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* FAQ Items */
+.faq-item {
+    background: rgba(20, 20, 20, 0.95);
+    border-radius: 14px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+/* FAQ Questions */
+.faq-question {
+    width: 100%;
+    background: transparent;
+    color: white;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.faq-question:hover {
+    background: rgba(255, 102, 0, 0.1);
+}
+
+/* FAQ Icon */
+.faq-icon {
+    font-size: 22px;
+    color: #F16A2E;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* FAQ Answer (Initially Hidden) */
+.faq-answer {
+    background: rgba(255, 102, 0, 0.05);
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+/* Active (When Open) */
+.faq-item.active .faq-answer {
+    padding: 20px;
+    max-height: 300px;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .faq-container {
+        max-width: 100%;
+    }
+}
