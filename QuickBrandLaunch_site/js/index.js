@@ -122,20 +122,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
   faqItems.forEach((item) => {
       const question = item.querySelector(".faq-question");
+      const answer = item.querySelector(".faq-answer");
 
       question.addEventListener("click", () => {
           const isOpen = item.classList.contains("active");
 
-          // Close all other items
-          faqItems.forEach((otherItem) => otherItem.classList.remove("active"));
+          // Close all other items smoothly
+          faqItems.forEach((otherItem) => {
+              if (otherItem !== item) {
+                  otherItem.classList.remove("active");
+                  otherItem.querySelector(".faq-answer").style.maxHeight = null;
+              }
+          });
 
-          // Open the clicked item if it wasn’t already open
+          // Toggle the clicked item
           if (!isOpen) {
-              item.classList.add("active");S
+              item.classList.add("active");
+              answer.style.maxHeight = answer.scrollHeight + "px"; // Smooth open
+          } else {
+              item.classList.remove("active");
+              answer.style.maxHeight = null; // Smooth close
           }
       });
   });
 });
+
+
 
 
 
