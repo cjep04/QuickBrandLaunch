@@ -147,7 +147,27 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const pricingMenu = document.querySelector(".pricing_menu");
+  const pricingMenuItems = pricingMenu.querySelectorAll(".pricing_menu_li");
+  const standardCard = document.querySelector(".offer-container1");
+  const customCard = document.querySelector(".offer-container2");
 
+  // Hide custom plan by default
+  customCard.style.display = "none";
+
+  pricingMenuItems.forEach((item) => {
+    item.addEventListener("click", function () {
+      if (item.textContent.includes("Standard")) {
+        standardCard.style.display = "flex";
+        customCard.style.display = "none";
+      } else if (item.textContent.includes("Custom")) {
+        customCard.style.display = "flex";
+        standardCard.style.display = "none";
+      }
+    });
+  });
+});
 
 
 
