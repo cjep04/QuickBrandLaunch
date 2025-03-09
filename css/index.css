@@ -1639,7 +1639,6 @@ clouds/ footer section                                       //
   position: relative;
   flex-direction: column;
   z-index: 9999;
-  overflow: hidden;
 }
 
 .CLOUDS {
