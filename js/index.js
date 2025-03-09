@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 'B' hotkey linking
   document.addEventListener("keydown", function(event) {
     if (event.key.toLowerCase() === "b") {
-        window.open("https://padel-central.co.uk/", "_blank");
+        window.open("https://calendly.com/quickbrandlaunch/30min", "_blank");
     }
 });
 
