@@ -1606,26 +1606,23 @@ FAQ section                                       //
   
   /* Mobile Responsiveness */
   @media (max-width: 768px) {
-	.faq-container {
-	  max-width: 100%;
-	}
-	
-	.faq-header h3 {
-	  font-size: 3rem;
-	  line-height: 48px;
-	}
-	
-	.faq-question {
-	  font-size: 16px;
-	  padding: 15px;
-	}
-	
-	.faq-answer {
-	  padding: 10px;
-	  font-size: 14px;
-	  line-height: 1.5;
-	}
-  }
+    .faq-header {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .faq-header h3 {
+        font-size: 2.5rem; /* Adjust size for better fit */
+        text-align: center;
+    }
+    
+    .faq-header p {
+        text-align: center;
+        max-width: 90%; /* Prevents text from stretching across the screen */
+    }
+}
 
 /*
 ///////////////////////////////////////////
@@ -1642,12 +1639,21 @@ clouds/ footer section                                       //
 }
 
 .CLOUDS {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  display: block;
+  width: 100vw;
+  height: 350px;
   object-fit: cover;
-  z-index: 9;
+}
+
+@media (max-width: 768px) {
+  .CLOUDS {
+    height: 300px; /* Slightly smaller on mobile but still large enough */
+  }
+}
+
+@media (max-width: 480px) {
+  .CLOUDS {
+    height: 250px; /* Optional – adjust if it’s still too large on very small screens */
+  }
 }
 
 .logo_footer {
