@@ -1608,7 +1608,6 @@ FAQ section                                       //
   @media (max-width: 768px) {
 	.faq-container {
 	  max-width: 100%;
-	  padding: 0 20px;
 	}
 	
 	.faq-header h3 {
@@ -1636,15 +1635,26 @@ clouds/ footer section                                       //
 #footer {
   display: flex;
   justify-content: center;
-  z-index: 9999;
-}
-.CLOUDS {
+  align-items: center;
   position: relative;
+  flex-direction: column;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.CLOUDS {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
   z-index: 9;
-  height: fit-content;
 }
 
 .logo_footer {
   position: absolute;
-  z-index: 9;
+  z-index: 10;
+  bottom: 20px; /* Adjust as needed */
+  width: auto;
+  max-width: 80%; /* Makes it scale nicely on mobile */
 }
