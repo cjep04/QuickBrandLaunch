@@ -1624,6 +1624,7 @@ FAQ section                                       //
     }
 }
 
+
 /*
 ///////////////////////////////////////////
 clouds/ footer section                                       //
@@ -1639,21 +1640,12 @@ clouds/ footer section                                       //
 }
 
 .CLOUDS {
-  width: 100vw;
-  height: 350px;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
   object-fit: cover;
-}
-
-@media (max-width: 768px) {
-  .CLOUDS {
-    height: 300px; /* Slightly smaller on mobile but still large enough */
-  }
-}
-
-@media (max-width: 480px) {
-  .CLOUDS {
-    height: 250px; /* Optional – adjust if it’s still too large on very small screens */
-  }
+  z-index: 9;
 }
 
 .logo_footer {
