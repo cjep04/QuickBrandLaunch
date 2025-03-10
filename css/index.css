@@ -1651,7 +1651,14 @@ clouds/ footer section                                       //
 .logo_footer {
   position: absolute;
   z-index: 10;
-  bottom: 20px; /* Adjust as needed */
   width: auto;
-  max-width: 80%; /* Makes it scale nicely on mobile */
+  max-width: 100%; /* Makes it scale nicely on mobile */
+  bottom: 550px; /* Adjust this value to bring the image higher */
+}
+
+@media (max-width: 768px) {
+  .logo_footer {
+    bottom: 150px; /* Adjust this value to ensure it sits just above the clouds image on mobile */
+    padding: 0px 20px;
+  }
 }
